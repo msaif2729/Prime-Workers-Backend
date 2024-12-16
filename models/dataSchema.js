@@ -6,7 +6,6 @@ const dataSchema =new Schema(
         title:{
             type:String,
             required:true,
-            unique:true
         },
         tagline:{
             type:String,

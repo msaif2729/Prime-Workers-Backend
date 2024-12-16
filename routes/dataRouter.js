@@ -35,31 +35,40 @@ dataRouter.post('/createData',async (req,res)=>{
 //Display All Category
 dataRouter.get('/getAllData',async (req,res)=>{
     try {
-        const exist = await dataSchema.findOne({
-            title: title
-        });
+        const exist = await dataSchema.find();
         res.status(201).json(exist);
     } catch (error) {
         res.status(500).send({error:error.message||'Internal error'})
     }
 })
 
-//Get Specific Data
+// Get Specific Data
 dataRouter.get('/getData/:title',async (req,res)=>{
     try {
         const {title} = req.params;
 
         const getData = await dataSchema.findOne({title});
         if (!getData) {
-            return res.status(404).json({ error: 'Data not found',dataE:false });
+            return res.status(404).json({ error: 'Data not found'});
         }
 
-        res.status(201).json({ error: 'Data found',dataE:true});
+        res.status(201).json({getData});
     } catch (error) {
         res.status(500).send({error:error.message||'Internal error'})
     }
 } )
 
+//Get All Title
+dataRouter.get('/getAllTitle',async (req,res)=>{
+    try {
+        const title = await dataSchema.find({}, { title: 1, _id: 0 });
+        res.status(201).json(title);
+    } catch (error) {
+        res.status(500).send({error:error.message||'Internal error'})
+    }
+})
+
+//Insert Images
 dataRouter.post('/insertImages',async (req,res)=>{
     try {
         
@@ -111,6 +120,8 @@ dataRouter.delete('/deleteData',async (req,res)=>{
 
 })
 
+
+//Delete Image
 dataRouter.delete('/deleteImage', async (req, res) => {
     try {
         const { title, image } = req.body;
