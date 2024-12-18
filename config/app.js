@@ -7,9 +7,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin:['http://localhost:3000'],
+    origin:['http://localhost:3000','https://prime-workers.vercel.app'],
     method : ['GET','POST','PUT','DELETE']
 }));
+
+app.options('*', cors());
 
 app.use('/api/data',dataRouter);
 app.use('/api/sendemail',eamilRouter);
