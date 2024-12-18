@@ -13,6 +13,10 @@ app.use(cors({
 
 app.options('*', cors());
 
+app.get('/', (req, res) => {
+    res.send('API is working!');
+});
+
 app.use('/api/data',dataRouter);
 app.use('/api/sendemail',eamilRouter);
 
