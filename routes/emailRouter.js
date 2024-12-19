@@ -1,12 +1,11 @@
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const emailRouter = express.Router();
 
-// Load environment variables from a .env file
 dotenv.config();
 
-// Nodemailer Transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -30,7 +29,15 @@ emailRouter.post('/send-email', (req, res) => {
     from: email, // Sender address
     to: process.env.EMAIL, // Recipient's email
     subject: subject, // Subject line
-    text: `You have received a message from ${name} (${phone}).\n\nMessage: ${message}`, // Plain text body
+    replyTo:email,
+    html: `
+    <p>You have a new message from your website contact form:</p>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Phone No:</strong> ${phone}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Subject:</strong> ${subject}</p>
+    <p><strong>Message:</strong> ${message}</p>
+  `
   };
 
   console.log(mailOptions)
