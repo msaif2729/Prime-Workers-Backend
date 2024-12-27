@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: ['https://primeworkers.in','http://localhost:3000', 'https://prime-workers.vercel.app'], // Allowed origins
+    origin: ['https://www.primeworkers.in','https://primeworkers.in','http://localhost:3000', 'https://prime-workers.vercel.app'], // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     credentials: true, // Allow cookies if needed
