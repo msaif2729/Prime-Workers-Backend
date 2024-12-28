@@ -14,7 +14,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-console.log(process.env.EMAIL);
+// console.log("Email : "+process.env.EMAIL);
+// console.log("Pass : "+process.env.APP_PASS);
 
 // Contact Form POST Endpoint
 emailRouter.post('/send-email', (req, res) => {
@@ -42,7 +43,7 @@ emailRouter.post('/send-email', (req, res) => {
   `
   };
 
-  console.log(mailOptions)
+  // console.log(mailOptions)
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {

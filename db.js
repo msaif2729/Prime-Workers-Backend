@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {MONGO_URL} = require('./config/config');
 
-console.log('Mongo URI:', process.env.MONGO_URL);
+// console.log('Mongo URI:', process.env.MONGO_URL);
 
 const connectToMongoDb = ()=>{
     mongoose.connect(MONGO_URL)
