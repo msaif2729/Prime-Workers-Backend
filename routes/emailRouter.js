@@ -14,14 +14,11 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// console.log("Email : "+process.env.EMAIL);
-// console.log("Pass : "+process.env.APP_PASS);
 
 // Contact Form POST Endpoint
 emailRouter.post('/send-email', (req, res) => {
   const { name, phone, email, subject, message } = req.body;
 
-//   console.log(req.body)
 
   // Validate input
   if (!name || !phone || !email || !subject || !message) {
@@ -42,8 +39,6 @@ emailRouter.post('/send-email', (req, res) => {
     <p><strong>Message:</strong> ${message}</p>
   `
   };
-
-  // console.log(mailOptions)
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
