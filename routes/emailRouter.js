@@ -14,6 +14,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+console.log(process.env.EMAIL);
+
 // Contact Form POST Endpoint
 emailRouter.post('/send-email', (req, res) => {
   const { name, phone, email, subject, message } = req.body;
